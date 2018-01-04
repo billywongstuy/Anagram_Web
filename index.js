@@ -34,7 +34,7 @@ var requiredLetters = function(word,require) {
     }
     var letter_list = [];
     for (var i = 0; i < word.length; i++) {
-	letter_list.push(word.charAt(i));
+	letter_list.push(word.charAt(i).toLowerCase());
     }
     for (var i = 0; i < require.length; i++) {
 	if (!letter_list.includes(require.charAt(i))) {
