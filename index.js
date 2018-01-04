@@ -2,9 +2,9 @@ var input_letters = document.getElementById("letters");
 var required_letters = document.getElementById("require");
 
 var findWords = function(query,require) {
-    //load a file
-    //var words = {};
-    //fill words with {w:w}
+    if (require != null) {
+	require = require.toLowerCase();
+    }
     return findWordsHelper("",query.toLowerCase(),words,{},require);
 };
 
@@ -34,7 +34,7 @@ var requiredLetters = function(word,require) {
     }
     var letter_list = [];
     for (var i = 0; i < word.length; i++) {
-	letter_list.push(word.charAt(i).toLowerCase());
+	letter_list.push(word.charAt(i));
     }
     for (var i = 0; i < require.length; i++) {
 	if (!letter_list.includes(require.charAt(i))) {
@@ -61,25 +61,3 @@ document.getElementById("findWords").addEventListener("click",function() {
 	out.innerHTML += ("<p>" + word_list[i].toUpperCase() + "</p>");
     }
 });
-
-/*
-if len(front) > 1 and front not in results and front in words and required_letters(front,require):
-        results[front] = front
-    if len(back) == 0:
-        return results
-    for c in back: #each character in the back
-        c_index = back.find(c)
-        find_word_helper(front+c,back[0:c_index]+back[c_index+1:],words,results,require)
-    return results
-
-
-def required_letters(word,require):
-    if require == None:
-        return True
-    copy = [c for c in word]
-    for c in require:
-        if c not in copy:
-            return False
-        copy.remove(c)
-    return True
-*/
