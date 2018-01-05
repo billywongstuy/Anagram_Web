@@ -1,32 +1,38 @@
 var input_letters = document.getElementById("letters");
 var required_letters = document.getElementById("require");
+var include_phrase = document.getElementById("phrase");
+var start_letter = document.getElementById("startL");
+var end_letter = document.getElementById("endL");
 
-var findWords = function(query,require) {
+var findWords = function(query,require,phrase,start,end) {
     if (require != null) {
 	require = require.toLowerCase();
     }
-    return findWordsHelper("",query.toLowerCase(),words,{},require);
+    //console.log(require,phrase,start,end);
+    return findWordsHelper("",query.toLowerCase(),words,{},require,phrase,start,end);
 };
 
-var findWordsHelper = function(front,back,words,results,require) {
-    if (front.length > 1 && !(front in results) && front in words && requiredLetters(front,require)) {
+var findWordsHelper = function(front,back,words,results,require,phrase,start,end) {
+    //if (front.length > 1 && !(front in results) && front in words && requiredLetters(front,require)) {
+    if (front.length > 1 && !(front in results) && front in words && wordChecks(front,require,phrase,start,end)) {
 	results[front] = '';
     }
     if (back.length == 0) {
-	return results;
+	return results; //just to terminate recursion instance
     }
     for (var i = 0; i < back.length; i++) {
 	var letter = back.charAt(i);
 	var new_back = back.substring(0,i) + back.substring(i+1);
-	findWordsHelper(front+letter,new_back,words,results,require);
+	findWordsHelper(front+letter,new_back,words,results,require,phrase,start,end);
     }
     return results;
 };
 
 
-var requiredLetters2 = function(word,require) {
-    return true;
+var wordChecks = function(word,require,phrase,start,end) {
+    return requiredLetters(word,require) && containsPhrase(word,phrase) && startWith(word,start) && endWith(word,end);
 };
+
 
 var requiredLetters = function(word,require) {
     if (require == null) {
@@ -43,11 +49,35 @@ var requiredLetters = function(word,require) {
 	letter_list.splice(letter_list.indexOf(require.charAt(i)),1);
     }
     return true;
+};
+
+
+var containsPhrase = function(word,phrase) {
+    if (phrase == null) {
+	return true;
+    }
+    return word.includes(phrase);
+};
+
+
+var startWith = function(word,letter) {
+    if (letter == null || letter == "") {
+	return true;
+    }
+    return word.charAt(0) == letter;
+}
+
+
+var endWith = function(word,letter) {
+    if (letter == null || letter == "") {
+	return true;
+    }
+    return word.charAt(word.length-1) == letter;
 }
 
 
 document.getElementById("findWords").addEventListener("click",function() {
-    var results = findWords(input_letters.value,require.value);
+    var results = findWords(input_letters.value,require.value,include_phrase.value,start_letter.value,end_letter.value);
     var out = document.getElementById("output");
     var word_list = [];
     out.innerHTML = "";

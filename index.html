@@ -10,7 +10,12 @@
     <h1>Anagram</h1>
     
     <p>Letters: <input type="text" name="letters" id="letters"></p>
-    <p>Required Letters: <input type="text" name="require" id="require"></p>
+    <h3>Extra</h3>
+    <p>Required Letters (any order): <input type="text" name="require" id="require"></p>
+    <p>Contains: <input type="text" name="phrase" id="phrase"></p>
+    <p>Starts with: <input type="text" maxlength="1" name="startL" id="startL"></p>
+    <p>End with: <input type="text" maxlength="1" name="endL" id="endL"></p>
+    <p>Filters (don't include 2 letter, 3 letter, etc.)</p>
     <button type="submit" id="findWords" value="Submit">Submit</button>
 
     <p id="output"></p>
