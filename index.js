@@ -3,6 +3,8 @@ var required_letters = document.getElementById("require");
 var include_phrase = document.getElementById("phrase");
 var start_letter = document.getElementById("startL");
 var end_letter = document.getElementById("endL");
+var two_filter = document.getElementById("twoL");
+var three_filter = document.getElementById("threeL");
 
 var findWords = function(query,require,phrase,start,end) {
     if (require != null) {
@@ -30,8 +32,13 @@ var findWordsHelper = function(front,back,words,results,require,phrase,start,end
 
 
 var wordChecks = function(word,require,phrase,start,end) {
-    return requiredLetters(word,require) && containsPhrase(word,phrase) && startWith(word,start) && endWith(word,end);
+    return requiredLetters(word,require) && containsPhrase(word,phrase) && startWith(word,start) && endWith(word,end) && !filterWord(word);
 };
+
+
+var filterWord = function(word) {
+    return (word.length == 2 && two_filter.checked) || (word.length == 3 && three_filter.checked);
+}
 
 
 var requiredLetters = function(word,require) {
