@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
+    <title>Anagram</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/words.json"></script>
   </head>
 
   <body>
 
-    <center>
+    <div class="container text-center">
     <h1>Anagram</h1>
     
     <p>Letters: <input type="text" name="letters" id="letters"></p>
     <h3>Extra</h3>
     <p>
-      Has Letters: <input type="text" name="require" id="require">
-      Contains: <input type="text" name="phrase" id="phrase">
-      Starts with: <input type="text" size="1" maxlength="1" name="startL" id="startL">
-      End with: <input type="text" size="1" maxlength="1" name="endL" id="endL">
+      Has Letters: <input type="text" size="10" name="require" id="require">
+      Contains: <input type="text" size="10" name="phrase" id="phrase">
+      Start: <input type="text" size="1" maxlength="1" name="startL" id="startL">
+      End: <input type="text" size="1" maxlength="1" name="endL" id="endL">
     </p>
-    <h3>Filters (don't include 2 letter, 3 letter, etc.)</h3>
+    <h3>Filters</h3>
     <p>
       <input type="checkbox" name="twoL" id="twoL" checked> 2 Letter Words
       <input type="checkbox" name="threeL" id="threeL"> 3 Letter Words
     </p>
-    <button type="submit" id="findWords" value="Submit">Submit</button>
+    <button class="btn btn-primary" id="findWords" value="Submit">Submit</button>
 
     <p id="output"></p>
     
+    <div id="output2" class="panel panel-default" style="display:none">
+    </div>
       
-    <script src="words.json"></script>
-    <script src="index.js"></script>  
-    </center>
+    </div>
+    
+    <script src="js/index.js"></script>  
     
   </body>
 
