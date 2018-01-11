@@ -11,7 +11,7 @@ var findWords = function(query,require,phrase,start,end) {
 	require = require.toLowerCase();
     }
     //console.log(require,phrase,start,end);
-    return findWordsHelper("",query.toLowerCase(),words,{},require,phrase,start,end);
+    return findWordsHelper("",query.toLowerCase(),words,{},require.toLowerCase(),phrase.toLowerCase(),start.toLowerCase(),end.toLowerCase());
 };
 
 var findWordsHelper = function(front,back,words,results,require,phrase,start,end) {
