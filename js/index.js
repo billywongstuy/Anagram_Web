@@ -97,7 +97,7 @@ var createPanel = function(name) {
     title.innerHTML = name;
     words.appendChild(title);
     panel.appendChild(words);
-    document.getElementById("output2").appendChild(panel);
+    document.getElementById("output").appendChild(panel);
 
     var collapse = document.createElement("div");
     collapse.className = "panel-collapse collapse";
@@ -105,7 +105,7 @@ var createPanel = function(name) {
     var list = document.createElement("ul");
     list.className = "list-group";
     collapse.appendChild(list);
-    document.getElementById("output2").appendChild(collapse);    
+    document.getElementById("output").appendChild(collapse);    
 
     return list;
     
@@ -114,9 +114,7 @@ var createPanel = function(name) {
 
 document.getElementById("findWords").addEventListener("click",function() {
     var results = findWords(input_letters.value,require.value,include_phrase.value,start_letter.value,end_letter.value);
-    var out = document.getElementById("output");
     var word_list = [];
-    out.innerHTML = "";
     for (var key in results) {
 	word_list.push(key);
     }
@@ -128,12 +126,14 @@ document.getElementById("findWords").addEventListener("click",function() {
 	out.innerHTML += ("<p>" + word_list[i].toUpperCase() + "</p>");
     }*/
 
-    var out2 = document.getElementById("output2");
-    while (out2.firstChild) {
-	out2.removeChild(out2.firstChild);
+    var out = document.getElementById("output");
+    while (out.firstChild) {
+	out.removeChild(out.firstChild);
     }
-    
-    out2.style.display = "block";
+
+    if (word_list.length > 0) {
+	out.style.display = "block";
+    }
     var curr_len = input_letters.value.length+1;
     var curr_panel = null;
     for (var i = 0; i < word_list.length; i++) {

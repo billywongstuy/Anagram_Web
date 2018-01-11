@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Anagram</title>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/jquery.min.js"></script>
@@ -12,27 +13,53 @@
   <body>
 
     <div class="container text-center">
-    <h1>Anagram</h1>
-    
-    <p>Letters: <input type="text" name="letters" id="letters"></p>
-    <h3>Extra</h3>
-    <p>
-      Has Letters: <input type="text" size="10" name="require" id="require">
-      Contains: <input type="text" size="10" name="phrase" id="phrase">
-      Start: <input type="text" size="1" maxlength="1" name="startL" id="startL">
-      End: <input type="text" size="1" maxlength="1" name="endL" id="endL">
-    </p>
-    <h3>Filters</h3>
-    <p>
-      <input type="checkbox" name="twoL" id="twoL" checked> 2 Letter Words
-      <input type="checkbox" name="threeL" id="threeL"> 3 Letter Words
-    </p>
-    <button class="btn btn-primary" id="findWords" value="Submit">Submit</button>
+      <h1>Anagram</h1>
+      
 
-    <p id="output"></p>
-    
-    <div id="output2" class="panel panel-default" style="display:none">
-    </div>
+      <div class="form-group">
+	<label for="letters" style="font-size: 20px;">Letters&nbsp;</label>
+	<input type="text"  name="letters" id="letters">
+      </div>
+      
+      <div class="panel panel-default">
+
+
+	<div class="panel-heading">
+	  <a class="collapse-header" data-toggle="collapse" href="#abc_filter" aria-expanded="true" aria-controls="abc_filter">
+	    <h3 class="panel-title">Letter Filters</h3>
+	  </a>
+	</div>
+
+	<div class="panel-collapse collapse" id="abc_filter">
+	  <ul class="list-group">
+	    <li>Has Letters: <input type="text" size="10" name="require" id="require"></li>
+	    <li>Contains: <input type="text" size="10" name="phrase" id="phrase"></li>
+	    <li>Start: <input type="text" size="1" maxlength="1" name="startL" id="startL"></li>
+	    <li>End: <input type="text" size="1" maxlength="1" name="endL" id="endL"></li>
+	  </ul>
+	</div>
+
+	
+	<div class="panel-heading">
+	  <a class="collapse-header" data-toggle="collapse" href="#len_filter" aria-expanded="true" aria-controls="len_filter">
+	    <h3 class="panel-title">Length Filters</h3>
+	  </a>
+	</div>
+
+	<div class="panel-collapse collapse" id="len_filter">
+	  <ul class="list-group">
+	    <li><input type="checkbox" name="twoL" id="twoL" checked> 2 Letter Words</li>
+	    <li><input type="checkbox" name="threeL" id="threeL"> 3 Letter Words</li>
+	  </ul>
+	</div>
+	
+      </div>
+
+      <button class="btn btn-primary" id="findWords" value="Submit">Submit</button>
+
+      <br><br>
+      
+      <div id="output" class="panel panel-default" style="display:none"></div>
       
     </div>
     
