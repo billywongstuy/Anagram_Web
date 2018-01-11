@@ -134,6 +134,10 @@ document.getElementById("findWords").addEventListener("click",function() {
     if (word_list.length > 0) {
 	out.style.display = "block";
     }
+    else {
+	out.style.display = "none";
+    }
+    
     var curr_len = input_letters.value.length+1;
     var curr_panel = null;
     for (var i = 0; i < word_list.length; i++) {
